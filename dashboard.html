@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Academy | Grade System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="Elite.png" width="50" class="me-2">Elite Academy</a>
+      <button class="btn btn-light btn-sm" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h3 class="text-center mb-3">Student Grade Calculator & Ranking System</h3>
+    
+    <div class="card p-4 mb-4 shadow-sm">
+      <h5>Student Information</h5>
+      <div class="row">
+        <div class="col-md-4 mb-3"><input type="text" id="studentName" class="form-control" placeholder="Full Name" required></div>
+        <div class="col-md-4 mb-3"><input type="text" id="studentID" class="form-control" placeholder="Student ID" required></div>
+        <div class="col-md-4 mb-3"><input type="text" id="studentClass" class="form-control" placeholder="Class (e.g. JSS2A)" required></div>
+      </div>
+    </div>
+
+    <div class="card p-4 shadow-sm">
+      <h5>Subjects & Scores</h5>
+      <form id="gradeForm">
+        <div id="subjectsContainer">
+          <div class="row mb-2 align-items-center">
+            <div class="col-md-5"><input type="text" class="form-control" name="subject[]" placeholder="Subject Name" required></div>
+            <div class="col-md-5"><input type="number" class="form-control" name="score[]" placeholder="Score (0 - 100)" required></div>
+            <div class="col-md-2 text-center"><button type="button" class="btn btn-danger btn-sm deleteRow">Delete</button></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary" id="addSubject">+ Add Subject</button>
+        <button type="submit" class="btn btn-primary">Calculate Grades</button>
+      </form>
+    </div>
+
+    <div id="result" class="card p-4 mt-4 shadow-sm d-none">
+      <h5 class="mb-3">Report Card</h5>
+      <div id="reportCard"></div>
+      <canvas id="gpaChart" height="100"></canvas>
+      <button class="btn btn-success mt-3" id="downloadReport">Download Report</button>
+    </div>
+
+    <div class="card p-4 mt-4 shadow-sm" id="rankingSection" style="display:none;">
+      <h5>Class Ranking</h5>
+      <div id="rankList"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="rank.js"></script>
+</body>
+</html>
